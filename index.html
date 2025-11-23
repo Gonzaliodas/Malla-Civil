@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Malla Curricular Interactiva</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Malla Curricular Interactiva</h1>
+    <p class="subtitle">Haz clic en "Se aprueba el ramo" para aprobarlo. Si es requisito de otros ramos, éstos se desbloquearán automáticamente.</p>
+    <div class="controls">
+      <button id="resetAll">Reiniciar todo</button>
+      <button id="exportState">Exportar estado (JSON)</button>
+      <button id="importState">Importar estado</button>
+      <input id="importInput" type="file" accept=".json" style="display:none"/>
+    </div>
+  </header>
+
+  <main id="gridWrap">
+    <div id="levels" class="levels-grid"></div>
+  </main>
+
+  <footer>
+    <small>Guardado en tu navegador (localStorage). Diseñado con tema lila.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
