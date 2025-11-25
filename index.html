@@ -1,31 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Malla Curricular Interactiva</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Interactiva Ingeniería Civil – USACH</title>
+  <meta name="description" content="Explora la malla curricular interactiva de Ingenieria Civil USACH. Descubre requisitos por semestre y desbloquea ramos al aprobar.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header>
-    <h1>Malla Curricular Interactiva</h1>
-    <p class="subtitle">Haz clic en "Se aprueba el ramo" para aprobarlo. Si es requisito de otros ramos, éstos se desbloquearán automáticamente.</p>
-    <div class="controls">
-      <button id="resetAll">Reiniciar todo</button>
-      <button id="exportState">Exportar estado (JSON)</button>
-      <button id="importState">Importar estado</button>
-      <input id="importInput" type="file" accept=".json" style="display:none"/>
+  <h1>Malla Ing Civil OOCC</h1>
+  <div class="malla-grid">
+    <div class="semestre" id="sem1">
+      <h2>1° Semestre</h2>
+      <div class="ramo" id="ingles1" onclick="aprobar('ingles1')">Inglés I</div>
+      <div class="ramo" id="calculo_ing1" onclick="aprobar('calculo_ing1')">Cálculo I para Ingeniería</div>
+      <div class="ramo" id="algebra_ing1" onclick="aprobar('algebra_ing1')">Álgebra I para Ingeniería</div>
+      <div class="ramo" id="fisica_ing1" onclick="aprobar('fisica_ing1')">Física I para Ingeniería</div>
+      <div class="ramo" id="diseno_ing" onclick="aprobar('diseno_ing')">Introducción al Diseño en Ingeniería</div>
     </div>
-  </header>
 
-  <main id="gridWrap">
-    <div id="levels" class="levels-grid"></div>
-  </main>
+    <div class="semestre" id="sem2">
+      <h2>2° Semestre</h2>
+      <div class="ramo bloqueado" id="ingles2" onclick="aprobar('ingles2')">Inglés II</div>
+      <div class="ramo bloqueado" id="calculo_ing2" onclick="aprobar('calculo_ing2')">Cálculo II para Ingeniería</div>
+      <div class="ramo bloqueado" id="algebra_ing2" onclick="aprobar('algebra_ing2')">Álgebra II para Ingeniería</div>
+      <div class="ramo bloqueado" id="fisica_ing2" onclick="aprobar('fisica_ing2')">Física II para Ingeniería</div>
+      <div class="ramo bloqueado" id="programacion_ing" onclick="aprobar('programacion_ing')">Fundamentos de Programación para Ingeniería</div>
+      <div class="ramo bloqueado" id="analisis_obras" onclick="aprobar('analisis_obras')">Análisis Estadistico para Obras Civiles</div>
+    </div>
 
-  <footer>
-    <small>Guardado en tu navegador (localStorage). Diseñado con tema lila.</small>
-  </footer>
+    <div class="semestre" id="sem3">
+      <h2>3° Semestre</h2>
+      <div class="ramo bloqueado" id="ingles3" onclick="aprobar('ingles3')">Inglés III</div>
+      <div class="ramo bloqueado" id="calculo_ing3" onclick="aprobar('calculo_ing3')">Cálculo III para Ingeniería</div>
+      <div class="ramo bloqueado" id="diferencial_ing" onclick="aprobar('diferencial_ing')">Ecuaciones Diferenciales para Ingeniería</div>
+      <div class="ramo bloqueado" id="fundeco_ing" onclick="aprobar('fundeco_ing')">Fundamentos de Economía para Ingeniería</div>
+      <div class="ramo bloqueado" id="estatica_aplicada" onclick="aprobar('estatica_aplicada')">Estática Aplicada</div>
+      <div class="ramo bloqueado" id="herramienta_computacional1" onclick="aprobar('herramienta_computacional1')">Herramientas Computacionales para Ingeniería I</div>
+    </div>
 
+    <div class="semestre" id="sem4">
+      <h2>4° Semestre</h2>
+      <div class="ramo bloqueado" id="ingles4" onclick="aprobar('ingles4')">Inglés IV</div>
+      <div class="ramo bloqueado" id="taller_diseno" onclick="aprobar('taller_diseno')">Taller de Diseño en Ingeniería</div>
+      <div class="ramo bloqueado" id="analisis_estructural" onclick="aprobar('analisis_estructural')">Análisis Estructural</div>
+      <div class="ramo bloqueado" id="materiales_ing" onclick="aprobar('materiales_ing')">Materiales de Ingeniería</div>
+      <div class="ramo bloqueado" id="topografia" onclick="aprobar('topografia')">Topografía</div>
+      <div class="ramo bloqueado" id="ciencias_ambientales" onclick="aprobar('ciencias_ambientales')">Ciencias Ambientales</div>
+    </div>
+
+    <div class="semestre" id="sem5">
+      <h2>5° Semestre</h2>
+      <div class="ramo bloqueado" id="mecanica_fluido" onclick="aprobar('mecanica_fluido')">Mecánica de Fluidos</div>
+      <div class="ramo bloqueado" id="tecnologia_hormigon" onclick="aprobar('tecnologia_hormigon')">Tecnología del Hormigón</div>
+      <div class="ramo bloqueado" id="mecanica_solido" onclick="aprobar('mecanica_solido')">Mecánica de Sólidos</div>
+      <div class="ramo bloqueado" id="edificacion" onclick="aprobar('edificacion')">Edificación</div>
+      <div class="ramo bloqueado" id="taller_integracion1" onclick="aprobar('taller_integracion1')">Taller de Integración I</div>
+    </div>
+
+    <div class="semestre" id="sem6">
+      <h2>6° Semestre</h2>
+      <div class="ramo bloqueado" id="hidraulica" onclick="aprobar('hidraulica')">Hidráulica</div>
+      <div class="ramo bloqueado" id="ing_sismica" onclick="aprobar('ing_sismica')">Ingeniería Sísmica</div>
+      <div class="ramo bloqueado" id="investigacion_operacion" onclick="aprobar('investigacion_operacion')">Investigación de Operaciones</div>
+      <div class="ramo bloqueado" id="mecanica_suelo1" onclick="aprobar('mecanica_suelo1')">Mecánica de Suelos I</div>
+      <div class="ramo bloqueado" id="ingles_profesional1" onclick="aprobar('ingles_profesional1')">Inglés Profesional I</div>
+      <div class="ramo bloqueado" id="herramienta_computacional2" onclick="aprobar('herramienta_computacional2')">Herramientas Computacionales para Ingeniería II</div>
+    </div>
+
+    <div class="semestre" id="sem7">
+      <h2>7° Semestre</h2>
+      <div class="ramo bloqueado" id="hidrologia_aplicada" onclick="aprobar('hidrologia_aplicada')">Hidrología Aplicada </div>
+      <div class="ramo bloqueado" id="hormigon_armado1" onclick="aprobar('hormigon_armado1')">Diseño en Hormigón Armado I</div>
+      <div class="ramo bloqueado" id="estructura_acero" onclick="aprobar('estructura_acero')">Diseño de Estructuras de Acero</div>
+      <div class="ramo bloqueado" id="mecanica_suelo2" onclick="aprobar('mecanica_suelo2')">Mecánica de Suelos II</div>
+      <div class="ramo bloqueado" id="taller_integracion2" onclick="aprobar('taller_integracion2')">Taller de Integración II</div>
+    </div>
+
+    <div class="semestre" id="sem8">
+      <h2>8° Semestre</h2>
+      <div class="ramo bloqueado" id="agua_alcantarillado" onclick="aprobar('agua_alcantarillado')">Redes de Agua Potable y Alcantarillado</div>
+      <div class="ramo bloqueado" id="topico_especialidad1" onclick="aprobar('topico_especialidad1')">Tópico de Especialidad I</div>
+      <div class="ramo bloqueado" id="hormigon_armado2" onclick="aprobar('hormigon_armado2')">Diseño en Hormigón Armado II</div>
+      <div class="ramo bloqueado" id="diseno_camino" onclick="aprobar('diseno_camino')">Diseño de Caminos</div>
+      <div class="ramo bloqueado" id="ingles_profesional2" onclick="aprobar('ingles_profesional2')">Inglés Profesional II</div>
+      <div class="ramo bloqueado" id="evaluacion_proyecto" onclick="aprobar('evaluacion_proyecto')">Evaluación de Proyectos</div>
+    </div>
+
+    <div class="semestre" id="sem9">
+      <h2>9° Semestre</h2>
+      <div class="ramo bloqueado" id="admin_obra" onclick="aprobar('admin_obra')">Administración de Obras</div>
+      <div class="ramo bloqueado" id="topico_especialidad2" onclick="aprobar('topico_especialidad2')">Tópico de Especialidad II</div>
+      <div class="ramo bloqueado" id="ingenieria_vial" onclick="aprobar('ingenieria_vial')">Ingeniería Vial</div>
+      <div class="ramo bloqueado" id="planificacion_proyecto" onclick="aprobar('planificacion_proyecto')">Planificación de Proyectos</div>
+      <div class="ramo bloqueado" id="topico_especialidad3" onclick="aprobar('topico_especialidad3')">Tópico de Especialidad III</div>
+      <div class="ramo bloqueado" id="electivo1" onclick="aprobar('electivo1')">Electivo I</div>
+    </div>
+
+    <div class="semestre" id="sem10">
+      <h2>10° Semestre</h2>
+      <div class="ramo bloqueado" id="seminario_titulacion" onclick="aprobar('seminario_titulacion')">Seminario de Titulación</div>
+      <div class="ramo bloqueado" id="direccion_empresa" onclick="aprobar('direccion_empresa')">Dirección de Empresa</div>
+      <div class="ramo bloqueado" id="topico_especialidad4" onclick="aprobar('topico_especialidad4')">Tópico de Especialidad IV</div>
+      <div class="ramo bloqueado" id="ambiental_ocupacional" onclick="aprobar('ambiental_ocupacional')">Gestión Ambiental y Ocupacional</div>
+      <div class="ramo bloqueado" id="taller_integracion3" onclick="aprobar('taller_integracion3')">Taller de Integración III</div>
+      <div class="ramo bloqueado" id="electivo2" onclick="aprobar('electivo2')">Electivo II</div>
+    </div>
+
+    <div class="semestre" id="sem11">
+        <h2>11° Semestre</h2>
+      <div class="ramo bloqueado" id="trabajo_titulacion" onclick="aprobar('trabajo_titulacion')">Trabajo de Titulación</div>
+    </div>
+
+    </div>
+    
+<div class="controls">
+    <button id="clearButton">Limpiar Todo</button>
+</div>
+
+<div class="leyenda">
+    <p><span class="color aprobado"></span> Aprobado</p>
+    <p><span class="color disponible"></span> Disponible (prerrequisitos cumplidos)</p>
+    <p><span class="color bloqueado"></span> Bloqueado</p>
+</div>
   <script src="script.js"></script>
+
+  <style>
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #c2185b;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+  </style>
 </body>
 </html>
